@@ -154,8 +154,8 @@
     <div class="widget">
       <h3 class="widget-title">Categories</h3>
       <div class="category-box">
-            <a class="category-link" href="/categories/TestMD/">
-                TestMD
+            <a class="category-link" href="/categories/C-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">
+                C++图像处理
                 <div class="category-count">1</div>
             </a>
         </div>
@@ -168,7 +168,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">Tags</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/CPP/" rel="tag">CPP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/ISP/" rel="tag">ISP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/RAW/" rel="tag">RAW</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li></ul>
     </div>
   </div>
 
@@ -180,9 +180,14 @@
       <h3 class="widget-title">Archives</h3>
       
       
+        <a class="archive-link" href="/archives/2026/03 ">
+          March 2026 
+          <div class="archive-count">1 </div>
+        </a>
+      
         <a class="archive-link" href="/archives/2026/02 ">
           February 2026 
-          <div class="archive-count">2 </div>
+          <div class="archive-count">1 </div>
         </a>
       
     </div>
@@ -196,9 +201,9 @@
       <h3 class="widget-title">Recent Posts</h3>
       <ul>
         
-          <a class="recent-link" href="/2026/02/07/Test1/" title="Test Note 1" >
+          <a class="recent-link" href="/2026/03/01/LibRaw%E8%AF%BB%E5%8F%96Bayer%20Raw%E5%B0%8F%E7%BB%93/" title="LibRaw读取Bayer Raw小结" >
             <div class="recent-link-text">
-              Test Note 1
+              LibRaw读取Bayer Raw小结
             </div>
           </a>
         
@@ -221,7 +226,7 @@
    
 
 
-<article id="post-Test1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-LibRaw读取Bayer Raw小结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -232,7 +237,7 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2026/02/07/Test1/">Test Note 1</a>
+        <a class="p-name article-title" href="/2026/03/01/LibRaw%E8%AF%BB%E5%8F%96Bayer%20Raw%E5%B0%8F%E7%BB%93/">LibRaw读取Bayer Raw小结</a>
       </h1>
     
   
@@ -240,46 +245,30 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2026-02-07T01:53:06.541Z" itemprop="datePublished">2026-02-07</time>
+  <time class="dt-published" datetime="2026-03-01T08:08:30.696Z" itemprop="datePublished">2026-03-01</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
   
-  <a class="meta-cate-link" href="/categories/TestMD/">TestMD</a>
+  <a class="meta-cate-link" href="/categories/C-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">C++图像处理</a>
    
 </div>
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            74 words 
+            22k words 
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPP/" rel="tag">CPP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ISP/" rel="tag">ISP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RAW/" rel="tag">RAW</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
           <div class="truncate-text">
             
-              H1H2H3H4H5
-
-
-
-title1
-title2
-title3
-
-
-
-value1
-value2
-value3
-
-
-
-$f(x,y)&#x3D;x^2+y^2$$\iint$
-
+              1、Bayer Raw内存排布格式使用LibRaw读取Bayer格式的Raw图像时需要调用LibRaw::open_bayer接口：
+1234567int LibRaw::open_bayer(const unsigned char *buffer, unsigned datalen,                       ushort _raw_width, ushort _raw_height,                       ushort _left_margin, ushort _top_margin,                       ushort _right_margin, ushort _bottom_margin,                       unsigned char procflags, unsigned char bayer_pattern,                       unsigned unused_bits, unsigned otherflags,                      ...
             
           </div>
         
@@ -290,8 +279,8 @@ $f(x,y)&#x3D;x^2+y^2$$\iint$
     
      
     <a class="right-panel  with-pic  "
-       style="background-image: url(/images/banner.png)" 
-      href="/2026/02/07/Test1/" 
+       style="background-image: url(/images/3_1_1/banner.jpg)" 
+      href="/2026/03/01/LibRaw%E8%AF%BB%E5%8F%96Bayer%20Raw%E5%B0%8F%E7%BB%93/" 
     >
        
       <div class="overlay">
