@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/20260206/hello-world/</loc>
+    <loc>https://zzwzwzwz.github.io/20260206/hello-world/</loc>
     
     <lastmod>2026-03-01</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/20260301/LibRaw%E8%AF%BB%E5%8F%96Bayer%20Raw%E5%B0%8F%E7%BB%93/</loc>
+    <loc>https://zzwzwzwz.github.io/20260301/LibRaw%E8%AF%BB%E5%8F%96Bayer%20Raw%E5%B0%8F%E7%BB%93/</loc>
     
     <lastmod>2026-03-01</lastmod>
     
@@ -21,37 +21,37 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
-    <lastmod>2026-03-01</lastmod>
+    <loc>https://zzwzwzwz.github.io/</loc>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://example.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</loc>
-    <lastmod>2026-03-01</lastmod>
+    <loc>https://zzwzwzwz.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</loc>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/CPP/</loc>
-    <lastmod>2026-03-01</lastmod>
+    <loc>https://zzwzwzwz.github.io/tags/CPP/</loc>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/ISP/</loc>
-    <lastmod>2026-03-01</lastmod>
+    <loc>https://zzwzwzwz.github.io/tags/ISP/</loc>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/RAW/</loc>
-    <lastmod>2026-03-01</lastmod>
+    <loc>https://zzwzwzwz.github.io/tags/RAW/</loc>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -59,8 +59,8 @@
 
   
   <url>
-    <loc>http://example.com/categories/C-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</loc>
-    <lastmod>2026-03-01</lastmod>
+    <loc>https://zzwzwzwz.github.io/categories/C-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</loc>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
