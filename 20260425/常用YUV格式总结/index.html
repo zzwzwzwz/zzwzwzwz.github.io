@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="desktop" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ED2PQCKEM7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ED2PQCKEM7');
+</script>
+<!-- End Google Analytics -->
+
+  
+<!-- Global site tag (gtag.js) - Baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?297a089da1a8c8670394abca14a2b3ea";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Analytics -->
+
+  
+<!-- Gaug.es Analytics -->
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', 'true');
+    t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+    t.src = 'https://d36ee2fcip1434.cloudfront.net/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+<!-- End Gaug.es Analytics -->
+
+
+  
+  <title>YUV格式汇总 | zwzwzwz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="0、前言一张数字彩色图片在内存中的排列由图像宽(width)、高(height)、步长(stride)、像素格式(pixel format)、位宽(bit width)等因素决定。图像宽高为水平方向和垂直方向的像素数量。stride为每行起始像素的内存地址跨度，为了提高图像读取效率，stride通常会对齐到特定边界以完整读取一行像素。 像素格式在物理上有RGB、Y’CbCr(YUV)等通道格式，R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YUV格式汇总">
+<meta property="og:url" content="https://zzwzwzwz.github.io/20260425/%E5%B8%B8%E7%94%A8YUV%E6%A0%BC%E5%BC%8F%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="zwzwzwz">
+<meta property="og:description" content="0、前言一张数字彩色图片在内存中的排列由图像宽(width)、高(height)、步长(stride)、像素格式(pixel format)、位宽(bit width)等因素决定。图像宽高为水平方向和垂直方向的像素数量。stride为每行起始像素的内存地址跨度，为了提高图像读取效率，stride通常会对齐到特定边界以完整读取一行像素。 像素格式在物理上有RGB、Y’CbCr(YUV)等通道格式，R">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zzwzwzwz.github.io/images/photos/cover2.png">
+<meta property="article:published_time" content="2026-04-25T14:43:00.262Z">
+<meta property="article:modified_time" content="2026-04-26T08:26:44.559Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="图像处理">
+<meta property="article:tag" content="CPP">
+<meta property="article:tag" content="ISP">
+<meta property="article:tag" content="YUV">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zzwzwzwz.github.io/images/photos/cover2.png">
+  
+    <link rel="alternate" href="/atom.xml" title="zwzwzwz" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/images/banner.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>zwzwzwz </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/bangumis">Bangumi</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/bangumis">Bangumi</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=https://avatars.githubusercontent.com/u/43472901?s=400&u=55eb1d604c92f9984d45d0eabfa1ccd9a4838c6b&v=4></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">ZWZWZWZ </div>
+      <div class="dot"></div>
+      <div class="subtitle">This is the subtitle </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/zzwzwzwz" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Categories</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/C-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">
+                C++图像处理
+                <div class="category-count">2</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/CPP/" rel="tag">CPP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/ISP/" rel="tag">ISP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/RAW/" rel="tag">RAW</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/YUV/" rel="tag">YUV</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Archives</h3>
+      
+      
+        <a class="archive-link" href="/archives/2026/04 ">
+          April 2026 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2026/03 ">
+          March 2026 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2026/02 ">
+          February 2026 
+          <div class="archive-count">1 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <a class="recent-link" href="/20260425/%E5%B8%B8%E7%94%A8YUV%E6%A0%BC%E5%BC%8F%E6%80%BB%E7%BB%93/" title="YUV格式汇总" >
+            <div class="recent-link-text">
+              YUV格式汇总
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/20260301/LibRaw%E8%AF%BB%E5%8F%96Bayer%20Raw%E5%B0%8F%E7%BB%93/" title="LibRaw读取Bayer Raw小结" >
+            <div class="recent-link-text">
+              LibRaw读取Bayer Raw小结
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/20260206/hello-world/" title="Hello World" >
+            <div class="recent-link-text">
+              Hello World
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-常用YUV格式总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img" rel="gallery_cmoegio9i0002jcig1xf2ekxz">
+        <img src="/images/photos/cover2.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        YUV格式汇总
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-04-25T14:43:00.262Z" itemprop="datePublished">2026-04-25</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/C-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">C++图像处理</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            14k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPP/" rel="tag">CPP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ISP/" rel="tag">ISP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/YUV/" rel="tag">YUV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><p>一张数字彩色图片在内存中的排列由图像宽(width)、高(height)、步长(stride)、像素格式(pixel format)、位宽(bit width)等因素决定。图像宽高为水平方向和垂直方向的像素数量。stride为每行起始像素的内存地址跨度，为了提高图像读取效率，stride通常会对齐到特定边界以完整读取一行像素。<br><img src="/images/4_2_25/0_1.png"></p>
+<p>像素格式在物理上有RGB、Y’CbCr(YUV)等通道格式，RGB通道是将一个像素值分解为红、绿、蓝三原色进行存储表示，YUV是将像素值分解为明度、蓝色色度和红色色度表示，在内存排列上有紧凑格式(PACKED)、平面格式(PLANAR)和半平面格式(SEMI-PLANAR)，PACKED格式下每个像素的三个通道数据在内存上相邻排布，PLANAR格式下每个通道构成一个平面，平面与平面内存上相邻，SEMI-PLANAR格式存在多个平面，部分平面按PACKED格式排布。位宽是每个像素值存储所需的比特位数，能够衡量像素值表示的动态范围，类似的表述还有位深，表示每个通道数值的动态范围，如RGB888的位深为8，位宽为24。<br><img src="/images/4_2_25/0_2.png"></p>
+<h2 id="1、YUV444族"><a href="#1、YUV444族" class="headerlink" title="1、YUV444族"></a>1、YUV444族</h2><p>YUV444格式是Y、U、V三个通道的全采样格式，每个像素上都存储一组Y、U、V值，因此YUV444三个通道的采样总数为<code>width*height*3</code>。<br><img src="/images/4_2_25/yuv444.png#pic_center"></p>
+<h3 id="1-1-PACKED"><a href="#1-1-PACKED" class="headerlink" title="1.1 PACKED"></a>1.1 PACKED</h3><h4 id="1-1-1-AYUV"><a href="#1-1-1-AYUV" class="headerlink" title="1.1.1 AYUV"></a>1.1.1 AYUV</h4><p>AYUV是YUV444的PACKED格式简称，AYUV在YUV三个通道的基础上增加了alpha透明度通道，每个像素位宽为32位，从内存低地址到高地址分别为A、Y、U、V分量。</p>
+<ul>
+<li>使用指向8位无符号数的指针<code>uint8_t* pixel</code>读取像素值时，其像素值对应为<code>A = pixel[0]</code>、<code>Y = pixel[1]</code>、<code>U = pixel[2]</code>、<code>V = pixel[3]</code>；</li>
+<li>使用指向32位无符号数的指针<code>uint32_t* pixel</code>读取像素值时，需要注意字节端序，小端序下为<code>A = *pixel &amp; 0xff</code>、<code>Y = (*pixel &gt;&gt; 8) &amp; 0xff</code>、<code>U = (*pixel &gt;&gt; 16) &amp; 0xff</code>、<code>V = (*pixel &gt;&gt; 24) &amp; 0xff</code>；大端序下为<code>A = (*pixel &gt;&gt; 24) &amp; 0xff</code>、<code>Y = (*pixel &gt;&gt; 16) &amp; 0xff</code>、<code>U = (*pixel &gt;&gt; 8) &amp; 0xff</code>、<code>V = *pixel &amp; 0xff</code>；<br><img src="/images/4_2_25/ayuv.png"></li>
+</ul>
+<p>需要注意的是，不同平台对应的AYUV物理地址顺序可能不一致：</p>
+<ul>
+<li>Windows平台下推荐的AYUV格式为内存低地址到高地址的顺序为V、U、Y、A分量，<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/win32/medfound/recommended-8-bit-yuv-formats-for-video-rendering#ayuv">Microsoft AYUV</a>；</li>
+<li>Linux V4L2支持的格式更多，通过<a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/pixfmt-packed-yuv.html#id4">Packed YUV Image Formats (8bpc)</a>可以查看；</li>
+</ul>
+<h4 id="1-1-2-Y410"><a href="#1-1-2-Y410" class="headerlink" title="1.1.2 Y410"></a>1.1.2 Y410</h4><p>Y410是AYUV的10bit格式，用4个字节32位作为一个像素打包单元，从高位到低位分别存放A、V、Y、U四个通道，其中A分量占2个bit，V、Y、U分别占10bit。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint8_t</span>* buffer = &amp;image[<span class="number">0</span>];</span><br><span class="line"><span class="type">uint8_t</span>* ptr = buffer;</span><br><span class="line"><span class="type">uint8_t</span> byte0, byte1, byte2, byte3;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; height; i++)&#123;</span><br><span class="line">	ptr = buffer;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; width; j++)&#123;</span><br><span class="line">		byte0 = *(ptr++);</span><br><span class="line">		byte1 = *(ptr++);</span><br><span class="line">		byte2 = *(ptr++);</span><br><span class="line">		byte3 = *(ptr++);</span><br><span class="line">		<span class="type">uint16_t</span> U = (((<span class="type">uint16_t</span>)byte1 &amp; <span class="number">0x0003</span>) &lt;&lt; <span class="number">8</span>)|byte0;</span><br><span class="line">		<span class="type">uint16_t</span> Y = (((<span class="type">uint16_t</span>)byte2 &amp; <span class="number">0x000F</span>) &lt;&lt; <span class="number">6</span>)|(byte1 &gt;&gt; <span class="number">2</span>);</span><br><span class="line">		<span class="type">uint16_t</span> V = (((<span class="type">uint16_t</span>)byte3 &amp; <span class="number">0x003F</span>) &lt;&lt; <span class="number">4</span>)|(byte2 &gt;&gt; <span class="number">4</span>);</span><br><span class="line">		<span class="type">uint8_t</span> A = byte3 &gt;&gt; <span class="number">6</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	buffer += stride;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/4_2_25/y410.png"></p>
+<h4 id="1-1-3-Y416"><a href="#1-1-3-Y416" class="headerlink" title="1.1.3 Y416"></a>1.1.3 Y416</h4><p>Y416是AYUV的16bit格式，用8字节64位作为一个像素打包单元，A、V、Y、U四个通道的位深均为16bit。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 小端序</span></span><br><span class="line"><span class="type">uint8_t</span>* buffer = &amp;image[<span class="number">0</span>];</span><br><span class="line"><span class="type">uint16_t</span>* ptr;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; height; i++)&#123;</span><br><span class="line">	ptr = (<span class="type">uint16_t</span>*) buffer;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; width; j++)&#123;</span><br><span class="line">		<span class="type">uint16_t</span> U = *(ptr++);</span><br><span class="line">		<span class="type">uint16_t</span> Y = *(ptr++);</span><br><span class="line">		<span class="type">uint16_t</span> V = *(ptr++);</span><br><span class="line">		<span class="type">uint16_t</span> A = *(ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">	buffer += stride;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-PLANAR-I444"><a href="#1-2-PLANAR-I444" class="headerlink" title="1.2 PLANAR (I444)"></a>1.2 PLANAR (I444)</h3><p>I444为YUV444的PLANAR格式简称，Y、U、V三个平面按顺序在内存中依次紧密排列，平面与平面之间没有字节填充，三个平面的像素宽、高、步长等图像格式信息保持一致，唯一的区别是存储的通道不同，每个通道的位深都是8位。读取像素值时只需使用8位无符号数进行读取即可：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint8_t</span>* buffer = &amp;image[<span class="number">0</span>];</span><br><span class="line"><span class="type">uint8_t</span>* y_ptr, *u_ptr, *v_ptr;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; height; i++)&#123;</span><br><span class="line">	y_ptr = buffer;</span><br><span class="line">	u_ptr = buffer + height*stride;</span><br><span class="line">	v_ptr = buffer + <span class="number">2</span>*height*stride;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; width; j++)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V = *(v_ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">	buffer += stride;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/4_2_25/i444.png"></p>
+<h3 id="1-3-SEMI-PLANAR-NV24-NV42"><a href="#1-3-SEMI-PLANAR-NV24-NV42" class="headerlink" title="1.3 SEMI-PLANAR (NV24&#x2F;NV42)"></a>1.3 SEMI-PLANAR (NV24&#x2F;NV42)</h3><p>YUV444的SEMI-PLANAR格式的第一个平面为Y平面，第二个平面根据U、V的顺序可以分为NV24和NV42两个格式。NV24格式第二个平面为UV平面，U分量排布于V分量前；NV42格式第二个平面为VU平面，V分量在前U分量在后。Y平面和UV(VU)平面具有相同的像素高度，像素宽度上UV平面是Y平面的两倍，因此两个平面的stride大多数情况下不相同，也不一定是两倍的关系。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint8_t</span>* buffer = &amp;image[<span class="number">0</span>];</span><br><span class="line"><span class="type">uint8_t</span>* y_plane = buffer;</span><br><span class="line"><span class="type">uint8_t</span>* uv_plane = buffer + height * stride1;</span><br><span class="line"><span class="type">uint8_t</span>* y_ptr, *uv_ptr;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; height; i++)&#123;</span><br><span class="line">	y_ptr = y_plane;</span><br><span class="line">	uv_ptr = uv_plane;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; width; j++)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U = *(uv_ptr++);        <span class="comment">// NV24</span></span><br><span class="line">		<span class="type">uint8_t</span> V = *(uv_ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">	y_plane += stride1;</span><br><span class="line">	uv_plane += stride2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/4_2_25/nv24.png"><br><img src="/images/4_2_25/nv42.png"></p>
+<h2 id="2、YUV422族"><a href="#2、YUV422族" class="headerlink" title="2、YUV422族"></a>2、YUV422族</h2><p>YUV422格式中Y通道全采样，U、V通道做1&#x2F;2下采样，每两个像素共用一个U、V分量。假设Y平面每行像素采样 width 个，那么U、V像素采样 ceil(width&#x2F;2) 个，在偶数宽度的情况下U、V分量的采样数是Y分量的一半，奇数宽度的情况下则向上取整。<br><img src="/images/4_2_25/yuv422.png"></p>
+<h3 id="2-1-PACKED"><a href="#2-1-PACKED" class="headerlink" title="2.1 PACKED"></a>2.1 PACKED</h3><h4 id="2-1-1-YUYV-YUY2"><a href="#2-1-1-YUYV-YUY2" class="headerlink" title="2.1.1 YUYV(YUY2)"></a>2.1.1 YUYV(YUY2)</h4><p>8位PACKED打包的YUV422格式被称为YUYV或YUY2格式，每两个像素作为一个单元打包，Y分量与UV分量交错排列</p>
+<ul>
+<li>Windows平台中定义了两种8bit位深的YUV422 PACKED格式，分别是按Y0、U0、Y1、V1顺序的YUY2格式和U0、Y0、V0、Y1顺序的UYVY格式；</li>
+<li>Linux V4L2根据U、V的顺序定义了四种格式：U0、Y0、V0、Y1，V0、Y0、U0、Y1，Y0、U0、Y1、V0，Y0、V0、Y1、U0；</li>
+<li>像素取值时可以使用4字节作为一个宏块处理，每个宏块包含两个像素的采样值。当水平像素个数为奇数时，最后一个孤立像素无法组成宏块，一种常见的处理方法是在编码时最后一个像素单独作为一个宏块，比如像素值为[y, u, v]时，最后一个宏块为[y, u, y, v]，<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27680466/how-does-the-uyvy-yuv-422-y422-uynv-hdyc-colour-system-handle-odd-pixel-c">How does the UYVY (YUV 4:2:2, Y422, UYNV, HDYC) colour system handle odd pixel counts?</a><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// YUY2</span></span><br><span class="line"><span class="type">uint8_t</span>* buffer = &amp;image[<span class="number">0</span>];</span><br><span class="line"><span class="type">uint8_t</span>* yuv_plane = buffer;</span><br><span class="line"><span class="type">uint8_t</span>* yuv_ptr;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; height; i++)&#123;</span><br><span class="line">	yuv_ptr = yuv_plane;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; width; j += <span class="number">2</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(yuv_ptr++);    <span class="comment">// 1st pixel</span></span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(yuv_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y1 = *(yuv_ptr++);    <span class="comment">// 2nd pixel</span></span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(yuv_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V1 = V0;</span><br><span class="line">	&#125;</span><br><span class="line">	yuv_plane += stride;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><img src="/images/4_2_25/yuy2.png"></p>
+<h4 id="2-1-2-Y210-Y212-Y216"><a href="#2-1-2-Y210-Y212-Y216" class="headerlink" title="2.1.2 Y210, Y212, Y216"></a>2.1.2 Y210, Y212, Y216</h4><p>10bit、12bit和16bit位深的YUV422 PACKED格式称为Y210、Y212和Y216，这几个格式中每个通道分量都使用2个8位字节按小端序的”字“存储，高位是有效位，低位是0无效位。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Y210 小端</span></span><br><span class="line"><span class="type">uint8_t</span>* buffer = &amp;image[<span class="number">0</span>];</span><br><span class="line"><span class="type">uint8_t</span>* yuv_plane = buffer;</span><br><span class="line"><span class="type">uint8_t</span>* yuv_ptr;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; height; i++)&#123;</span><br><span class="line">	yuv_ptr = yuv_plane;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; width; j += <span class="number">2</span>)&#123;</span><br><span class="line">		<span class="type">uint16_t</span> Y0 = ((<span class="type">uint16_t</span>) *(yuv_ptr++) | ((<span class="type">uint16_t</span>) *(yuv_ptr++)) &lt;&lt; <span class="number">8</span>) &gt;&gt; <span class="number">6</span>;    <span class="comment">// 1st pixel</span></span><br><span class="line">		<span class="type">uint16_t</span> U0 = ((<span class="type">uint16_t</span>) *(yuv_ptr++) | ((<span class="type">uint16_t</span>) *(yuv_ptr++)) &lt;&lt; <span class="number">8</span>) &gt;&gt; <span class="number">6</span>;</span><br><span class="line">		<span class="type">uint16_t</span> Y1 = ((<span class="type">uint16_t</span>) *(yuv_ptr++) | ((<span class="type">uint16_t</span>) *(yuv_ptr++)) &lt;&lt; <span class="number">8</span>) &gt;&gt; <span class="number">6</span>;    <span class="comment">// 2nd pixel</span></span><br><span class="line">		<span class="type">uint16_t</span> V0 = ((<span class="type">uint16_t</span>) *(yuv_ptr++) | ((<span class="type">uint16_t</span>) *(yuv_ptr++)) &lt;&lt; <span class="number">8</span>) &gt;&gt; <span class="number">6</span>;</span><br><span class="line">		<span class="type">uint16_t</span> U1 = U0;</span><br><span class="line">		<span class="type">uint16_t</span> V1 = V0;</span><br><span class="line">	&#125;</span><br><span class="line">	yuv_plane += stride;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-PLANAR"><a href="#2-2-PLANAR" class="headerlink" title="2.2 PLANAR"></a>2.2 PLANAR</h3><h4 id="2-2-1-I422"><a href="#2-2-1-I422" class="headerlink" title="2.2.1 I422"></a>2.2.1 I422</h4><p>I422是YUV422的平面格式，内存上按照Y、U、V三个平面紧密排列，三个平面具有相同的高度，U、V平面的宽度为Y平面的一半，具有相同的stride。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint8_t</span>* buffer = &amp;image[<span class="number">0</span>];</span><br><span class="line"><span class="type">uint8_t</span>* y_plane = buffer;</span><br><span class="line"><span class="type">uint8_t</span>* u_plane = buffer + height*stride1;</span><br><span class="line"><span class="type">uint8_t</span>* v_plane = buffer + height*stride1 + height*stride2;</span><br><span class="line"><span class="type">uint8_t</span>* y_ptr, *u_ptr, *v_ptr;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; height; i++)&#123;</span><br><span class="line">	y_ptr = y_plane;</span><br><span class="line">	u_ptr = u_plane;</span><br><span class="line">	v_ptr = v_plane;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j + <span class="number">1</span> &lt; width; j += <span class="number">2</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(v_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y1 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V1 = V0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(width &amp; <span class="number">1</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(v_ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">	y_plane += stride1;</span><br><span class="line">	u_plane += stride2;</span><br><span class="line">	v_plane += stride2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/4_2_25/i422.png"></p>
+<h3 id="2-3-SEMI-PLANAR"><a href="#2-3-SEMI-PLANAR" class="headerlink" title="2.3 SEMI-PLANAR"></a>2.3 SEMI-PLANAR</h3><h4 id="2-3-1-NV16-NV61"><a href="#2-3-1-NV16-NV61" class="headerlink" title="2.3.1 NV16&#x2F;NV61"></a>2.3.1 NV16&#x2F;NV61</h4><p>与NV24&#x2F;NV42相同，YUV422的SEMI-PLANAR格式根据第二个平面中U、V的交错排列顺序不同可分为NV16和NV61，NV16中U分量位于V分量之前，NV61则相反。Y平面和UV平面具有相同的高度，宽度上根据奇偶像素宽度的不同：偶数个像素时Y平面与UV平面宽度相同，此时两个平面具有相同的stride；奇数个像素时UV平面比Y平面多出两个像素宽度，此时stride也不相同。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint8_t</span>* buffer = &amp;image[<span class="number">0</span>];</span><br><span class="line"><span class="type">uint8_t</span>* y_plane = buffer;</span><br><span class="line"><span class="type">uint8_t</span>* uv_plane = buffer + height * stride1;</span><br><span class="line"><span class="type">uint8_t</span>* y_ptr, *uv_ptr;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; height; i++)&#123;</span><br><span class="line">	y_ptr = y_plane;</span><br><span class="line">	uv_ptr = uv_plane;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j + <span class="number">1</span> &lt; width; j+=<span class="number">2</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(uv_ptr++);        <span class="comment">// NV16</span></span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(uv_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y1 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V1 = V0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(width &amp; <span class="number">1</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(uv_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(uv_ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">	y_plane += stride1;</span><br><span class="line">	uv_plane += stride2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/4_2_25/nv16.png"><br><img src="/images/4_2_25/nv61.png"></p>
+<h2 id="3、YUV420族"><a href="#3、YUV420族" class="headerlink" title="3、YUV420族"></a>3、YUV420族</h2><p>YUV420中Y分量全采样，U、V分量在垂直像素和水平像素两个方向都取1&#x2F;2的半采样。对于width × height的图像，Y分量总采样数为width × height个，U、V分量在垂直方向采样 ceil(height&#x2F;2) 个，水平方向采样 ceil(width&#x2F;2) 个，总采样数为 ceil(width&#x2F;2) × ceil(height&#x2F;2) 个。<br><img src="/images/4_2_25/yuv420.png"></p>
+<h3 id="3-1-PACKED"><a href="#3-1-PACKED" class="headerlink" title="3.1 PACKED"></a>3.1 PACKED</h3><p>由于YUV420的U、V分量在像素高度方向采用1&#x2F;2下采样，Y、U、V三个通道交错排列的PACKED格式非常少见，目前没有一个通用的格式规范。</p>
+<h3 id="3-2-PLANAR"><a href="#3-2-PLANAR" class="headerlink" title="3.2 PLANAR"></a>3.2 PLANAR</h3><h4 id="3-2-1-I420-YV12"><a href="#3-2-1-I420-YV12" class="headerlink" title="3.2.1 I420&#x2F;YV12"></a>3.2.1 I420&#x2F;YV12</h4><p>I420&#x2F;YV12格式中Y、U、V三个分量分别位于不同的平面，每个分量位深为8位，Y分量排布为 width × height，U、V分量排布为 ceil(width&#x2F;2) × ceil(height&#x2F;2)，I420中U平面在前V平面在后，YV12中V平面在前U平面在后。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// I420</span></span><br><span class="line"><span class="type">uint8_t</span>* buffer = &amp;image[<span class="number">0</span>];</span><br><span class="line"><span class="type">uint8_t</span>* y_plane = buffer;</span><br><span class="line"><span class="type">uint8_t</span>* u_plane = buffer + height*stride1;</span><br><span class="line"><span class="type">uint8_t</span>* v_plane = buffer + height*stride1 + (height<span class="number">+1</span>)/<span class="number">2</span>*stride2;</span><br><span class="line"><span class="type">uint8_t</span>* y_ptr, *u_ptr, *v_ptr;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i + <span class="number">1</span> &lt; height; i += <span class="number">2</span>)&#123;</span><br><span class="line">	y_ptr = y_plane;    <span class="comment">// 第一行</span></span><br><span class="line">	u_ptr = u_plane;</span><br><span class="line">	v_ptr = v_plane;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j + <span class="number">1</span> &lt; width; j += <span class="number">2</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0_0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0_0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0_0 = *(v_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y0_1 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0_1 = U0_0;</span><br><span class="line">		<span class="type">uint8_t</span> V0_1 = V0_0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(width &amp; <span class="number">1</span>)&#123;    <span class="comment">// 孤立列像素</span></span><br><span class="line">		<span class="type">uint8_t</span> Y0_0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0_0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0_0 = *(v_ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">	y_plane += stride1;    <span class="comment">// 第二行</span></span><br><span class="line">	y_ptr = y_plane;</span><br><span class="line">	u_ptr = u_plane;</span><br><span class="line">	v_ptr = v_plane;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j + <span class="number">1</span> &lt; width; j += <span class="number">2</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y1_0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1_0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V1_0 = *(v_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y1_1 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1_1 = U1_0;</span><br><span class="line">		<span class="type">uint8_t</span> V1_1 = V1_0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(width &amp; <span class="number">1</span>)&#123;    <span class="comment">// 孤立列像素</span></span><br><span class="line">		<span class="type">uint8_t</span> Y1_0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1_0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V1_0 = *(v_ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	y_plane += stride1;</span><br><span class="line">	u_plane += stride2;</span><br><span class="line">	v_plane += stride2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(height &amp; <span class="number">1</span>)&#123;    <span class="comment">// 孤立行像素</span></span><br><span class="line">	y_ptr = y_plane;</span><br><span class="line">	u_ptr = u_plane;</span><br><span class="line">	v_ptr = v_plane;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j + <span class="number">1</span> &lt; width; j += <span class="number">2</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0_0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0_0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0_0 = *(v_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y0_1 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0_1 = U0_0;</span><br><span class="line">		<span class="type">uint8_t</span> V0_1 = V0_0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(width &amp; <span class="number">1</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0_0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0_0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0_0 = *(v_ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/4_2_25/i420.png"><br><img src="/images/4_2_25/yv12.png"></p>
+<h4 id="3-2-2-IMC1-IMC3"><a href="#3-2-2-IMC1-IMC3" class="headerlink" title="3.2.2 IMC1&#x2F;IMC3"></a>3.2.2 IMC1&#x2F;IMC3</h4><p>IMC1&#x2F;IMC3可以认为是YV12&#x2F;I420的对齐版本，在平面步长上，U、V平面对齐到与Y平面一致，三个平面具有相同的stride，此外U、V平面的起始地址必须对齐到16行整数倍的地址上，意味着三个平面之间有填充字节。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// IMC3</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">align16</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123; <span class="keyword">return</span> ((x + <span class="number">15</span>) / <span class="number">16</span>) * <span class="number">16</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">uint8_t</span>* buffer = &amp;image[<span class="number">0</span>];</span><br><span class="line"><span class="type">uint8_t</span>* y_plane = buffer;</span><br><span class="line"><span class="type">uint8_t</span>* u_plane = buffer + <span class="built_in">align16</span>(height)*stride;</span><br><span class="line"><span class="type">uint8_t</span>* v_plane = buffer + <span class="built_in">align16</span>(height)*stride + <span class="built_in">align16</span>((height<span class="number">+1</span>)/<span class="number">2</span>)*stride;</span><br><span class="line"><span class="comment">// ...与I420相同, stride1 = stride2 = stride</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/4_2_25/imc1.png"><br><img src="/images/4_2_25/imc3.png"></p>
+<h4 id="3-2-3-IMC2-IMC4"><a href="#3-2-3-IMC2-IMC4" class="headerlink" title="3.2.3 IMC2&#x2F;IMC4"></a>3.2.3 IMC2&#x2F;IMC4</h4><p>IMC2&#x2F;IMC4格式中U、V平面从平面在内存上的相邻变成了每一行分量的相邻排布，在一行U分量后紧跟着一行V分量，每行U分量与V分量行交错排布，平面不需要对齐到16行倍数地址。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// IMC4</span></span><br><span class="line"><span class="type">uint8_t</span>* buffer = &amp;image[<span class="number">0</span>];</span><br><span class="line"><span class="type">uint8_t</span>* y_plane = buffer;</span><br><span class="line"><span class="type">uint8_t</span>* uv_plane = buffer + height*stride1;</span><br><span class="line"><span class="type">uint8_t</span>* y_ptr, *u_ptr, *v_ptr;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i + <span class="number">1</span> &lt; height; i += <span class="number">2</span>)&#123;</span><br><span class="line">    y_ptr = y_plane;</span><br><span class="line">	u_ptr = uv_plane;</span><br><span class="line">	v_ptr = uv_plane + (stride1<span class="number">+1</span>)/<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j + <span class="number">1</span> &lt; width; j += <span class="number">2</span>)&#123;</span><br><span class="line">	    <span class="type">uint8_t</span> Y0_0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0_0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0_0 = *(v_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y0_1 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0_1 = U0_0;</span><br><span class="line">		<span class="type">uint8_t</span> V0_1 = V0_0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(width &amp; <span class="number">1</span>)&#123;    <span class="comment">// 孤立列像素</span></span><br><span class="line">		<span class="type">uint8_t</span> Y0_0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0_0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0_0 = *(v_ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">	y_plane += stride1;    <span class="comment">// 第二行</span></span><br><span class="line">	y_ptr = y_plane;</span><br><span class="line">	u_ptr = uv_plane;</span><br><span class="line">	v_ptr = uv_plane + (stride1<span class="number">+1</span>)/<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j + <span class="number">1</span> &lt; width; j += <span class="number">2</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y1_0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1_0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V1_0 = *(v_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y1_1 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1_1 = U1_0;</span><br><span class="line">		<span class="type">uint8_t</span> V1_1 = V1_0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(width &amp; <span class="number">1</span>)&#123;    <span class="comment">// 孤立列像素</span></span><br><span class="line">		<span class="type">uint8_t</span> Y1_0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1_0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V1_0 = *(v_ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	y_plane += stride1;</span><br><span class="line">	uv_plane += ((stride1<span class="number">+1</span>)/<span class="number">2</span>)*<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(height &amp; <span class="number">1</span>)&#123;    <span class="comment">// 孤立行像素</span></span><br><span class="line">	y_ptr = y_plane;</span><br><span class="line">	u_ptr = uv_plane;</span><br><span class="line">	v_ptr = uv_plane + (stride1<span class="number">+1</span>)/<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j + <span class="number">1</span> &lt; width; j += <span class="number">2</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0_0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0_0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0_0 = *(v_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y0_1 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0_1 = U0_0;</span><br><span class="line">		<span class="type">uint8_t</span> V0_1 = V0_0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(width &amp; <span class="number">1</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0_0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0_0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0_0 = *(v_ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/4_2_25/imc2.png"><br><img src="/images/4_2_25/imc4.png"></p>
+<h3 id="3-3-SEMI-PLANAR"><a href="#3-3-SEMI-PLANAR" class="headerlink" title="3.3 SEMI-PLANAR"></a>3.3 SEMI-PLANAR</h3><h4 id="3-3-1-NV12-NV21"><a href="#3-3-1-NV12-NV21" class="headerlink" title="3.3.1 NV12&#x2F;NV21"></a>3.3.1 NV12&#x2F;NV21</h4><p>YUV420的8bit SEMI-PLANAR格式为NV12&#x2F;NV21，排布类似NV16&#x2F;NV61，区别在于平面高度减半。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// NV12</span></span><br><span class="line"><span class="type">uint8_t</span>* buffer = &amp;image[<span class="number">0</span>];</span><br><span class="line"><span class="type">uint8_t</span>* y_plane = buffer;</span><br><span class="line"><span class="type">uint8_t</span>* uv_plane = buffer + height * stride1;</span><br><span class="line"><span class="type">uint8_t</span>* y_ptr, *uv_ptr;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i + <span class="number">1</span> &lt; height; i += <span class="number">2</span>)&#123;</span><br><span class="line">	y_ptr = y_plane;</span><br><span class="line">	uv_ptr = uv_plane;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j + <span class="number">1</span> &lt; width; j += <span class="number">2</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(uv_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(uv_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y1 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V1 = V0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(width &amp; <span class="number">1</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(uv_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(uv_ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">	y_plane += stride1;</span><br><span class="line">	y_ptr = y_plane;</span><br><span class="line">	uv_ptr = uv_plane;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j + <span class="number">1</span> &lt; width; j += <span class="number">2</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(uv_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(uv_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y1 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V1 = V0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(width &amp; <span class="number">1</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(uv_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(uv_ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">	y_plane += stride1;</span><br><span class="line">	uv_plane += stride2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(height &amp; <span class="number">1</span>)&#123;    <span class="comment">// 孤立行像素</span></span><br><span class="line">	y_ptr = y_plane;</span><br><span class="line">	uv_ptr = uv_plane;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j + <span class="number">1</span> &lt; width; j += <span class="number">2</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(uv_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(uv_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y1 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V1 = V0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(width &amp; <span class="number">1</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(uv_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(uv_ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/4_2_25/nv12.png"><br><img src="/images/4_2_25/nv21.png"></p>
+<h2 id="4、YUV411族"><a href="#4、YUV411族" class="headerlink" title="4、YUV411族"></a>4、YUV411族</h2><p>YUV411中Y分量全采样，U、V分量在水平像素方向1&#x2F;4下采样，垂直像素方向全采样。因此，Y分量采样数为 width × height，U、V分量采样数为 ceil(width&#x2F;4) × height。<br><img src="/images/4_2_25/yuv411.png"></p>
+<h3 id="4-1-PACKED"><a href="#4-1-PACKED" class="headerlink" title="4.1 PACKED"></a>4.1 PACKED</h3><h4 id="4-1-1-Y41P"><a href="#4-1-1-Y41P" class="headerlink" title="4.1.1 Y41P"></a>4.1.1 Y41P</h4><p>Y41P以3个字作为一个宏块，每个字4个字节，存储8个像素的YUV值。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Y41P</span></span><br><span class="line"><span class="type">uint8_t</span>* buffer = &amp;image[<span class="number">0</span>];</span><br><span class="line"><span class="type">uint8_t</span>* yuv_plane = buffer;</span><br><span class="line"><span class="type">uint8_t</span>* yuv_ptr;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; height; i++)&#123;</span><br><span class="line">	yuv_ptr = yuv_plane;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; width; j += <span class="number">8</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(yuv_ptr++);    <span class="comment">// 1st pixel</span></span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(yuv_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(yuv_ptr++);</span><br><span class="line">		</span><br><span class="line">		<span class="type">uint8_t</span> Y1 = *(yuv_ptr++);    <span class="comment">// 2nd pixel</span></span><br><span class="line">		<span class="type">uint8_t</span> U1 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V1 = V0;</span><br><span class="line">		</span><br><span class="line">		<span class="type">uint8_t</span> U4 = *(yuv_ptr++);</span><br><span class="line">		</span><br><span class="line">		<span class="type">uint8_t</span> Y2 = *(yuv_ptr++);    <span class="comment">// 3</span></span><br><span class="line">		<span class="type">uint8_t</span> U2 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V2 = V0;</span><br><span class="line">		</span><br><span class="line">		<span class="type">uint8_t</span> V4 = *(yuv_ptr++);</span><br><span class="line">		</span><br><span class="line">		<span class="type">uint8_t</span> Y3 = *(yuv_ptr++);    <span class="comment">// 4</span></span><br><span class="line">		<span class="type">uint8_t</span> U3 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V3 = V0;</span><br><span class="line">		</span><br><span class="line">		<span class="type">uint8_t</span> Y4 = *(yuv_ptr++);    <span class="comment">// 5</span></span><br><span class="line">		</span><br><span class="line">		<span class="type">uint8_t</span> Y5 = *(yuv_ptr++);    <span class="comment">// 6</span></span><br><span class="line">		<span class="type">uint8_t</span> U5 = U4;</span><br><span class="line">		<span class="type">uint8_t</span> V5 = V4;</span><br><span class="line">		</span><br><span class="line">		<span class="type">uint8_t</span> Y6 = *(yuv_ptr++);    <span class="comment">// 7</span></span><br><span class="line">		<span class="type">uint8_t</span> U6 = U4;</span><br><span class="line">		<span class="type">uint8_t</span> V6 = V4;</span><br><span class="line">		</span><br><span class="line">		<span class="type">uint8_t</span> Y7 = *(yuv_ptr++);    <span class="comment">// 8</span></span><br><span class="line">		<span class="type">uint8_t</span> U7 = U4;</span><br><span class="line">		<span class="type">uint8_t</span> V7 = V4;</span><br><span class="line">	&#125;</span><br><span class="line">	yuv_plane += stride;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/4_2_25/y41p.png"></p>
+<h3 id="4-2-PLANAR"><a href="#4-2-PLANAR" class="headerlink" title="4.2 PLANAR"></a>4.2 PLANAR</h3><h4 id="4-2-1-YUV411P"><a href="#4-2-1-YUV411P" class="headerlink" title="4.2.1 YUV411P"></a>4.2.1 YUV411P</h4><p>YUV411P的三个平面具有相同的像素高度，U、V平面的像素宽度为Y平面的1&#x2F;4采样。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint8_t</span>* buffer = &amp;image[<span class="number">0</span>];</span><br><span class="line"><span class="type">uint8_t</span>* y_plane = buffer;</span><br><span class="line"><span class="type">uint8_t</span>* u_plane = buffer + height*stride1;</span><br><span class="line"><span class="type">uint8_t</span>* v_plane = buffer + height*stride1 + height*stride2;</span><br><span class="line"><span class="type">uint8_t</span>* y_ptr, *u_ptr, *v_ptr;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; height; i++)&#123;</span><br><span class="line">	y_ptr = y_plane;</span><br><span class="line">	u_ptr = u_plane;</span><br><span class="line">	v_ptr = v_plane;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j + <span class="number">3</span> &lt; width; j += <span class="number">4</span>)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(v_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y1 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V1 = V0;</span><br><span class="line">		<span class="type">uint8_t</span> Y2 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U2 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V2 = V0;</span><br><span class="line">		<span class="type">uint8_t</span> Y3 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U3 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V3 = V0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>((x &amp; (( <span class="number">1</span>&lt;&lt;<span class="number">2</span> ) − <span class="number">1</span>)) == <span class="number">1</span>)&#123;    <span class="comment">// 剩余1个像素</span></span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(v_ptr++);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>((x &amp; (( <span class="number">1</span>&lt;&lt;<span class="number">2</span> ) − <span class="number">1</span>)) == <span class="number">2</span>)&#123;    <span class="comment">// 剩余2个像素</span></span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(v_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y1 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V1 = V0;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>((x &amp; (( <span class="number">1</span>&lt;&lt;<span class="number">2</span> ) − <span class="number">1</span>)) == <span class="number">3</span>)&#123;    <span class="comment">// 剩余3个像素</span></span><br><span class="line">		<span class="type">uint8_t</span> Y0 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U0 = *(u_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> V0 = *(v_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> Y1 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U1 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V1 = V0;</span><br><span class="line">		<span class="type">uint8_t</span> Y2 = *(y_ptr++);</span><br><span class="line">		<span class="type">uint8_t</span> U2 = U0;</span><br><span class="line">		<span class="type">uint8_t</span> V2 = V0;</span><br><span class="line">	&#125;</span><br><span class="line">	y_plane += stride1;</span><br><span class="line">	u_plane += stride2;</span><br><span class="line">	v_plane += stride2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/4_2_25/yuv411p.png"></p>
+<h2 id="5、-参考链接"><a href="#5、-参考链接" class="headerlink" title="5、 参考链接"></a>5、 参考链接</h2><p>[1] YUV Formats, <a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/yuv-formats.html#yuv-formats">https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/yuv-formats.html#yuv-formats</a><br>[2] 建议用于视频渲染的 8 位 YUV 格式, <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/medfound/recommended-8-bit-yuv-formats-for-video-rendering#420-formats-16-bits-per-pixel">https://learn.microsoft.com/zh-cn/windows/win32/medfound/recommended-8-bit-yuv-formats-for-video-rendering#420-formats-16-bits-per-pixel</a><br>[3] 10 位和 16 位 YUV 视频格式, <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/medfound/10-bit-and-16-bit-yuv-video-formats">https://learn.microsoft.com/zh-cn/windows/win32/medfound/10-bit-and-16-bit-yuv-video-formats</a><br>[4] YUV pixel formats, <a target="_blank" rel="noopener" href="https://fourcc.org/yuv.php">https://fourcc.org/yuv.php</a></p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/20260301/LibRaw%E8%AF%BB%E5%8F%96Bayer%20Raw%E5%B0%8F%E7%BB%93/"
+      title="LibRaw读取Bayer Raw小结"
+     >
+
+    <p class="title-text">
+      
+        LibRaw读取Bayer Raw小结
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2026 ZWZWZWZ<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
